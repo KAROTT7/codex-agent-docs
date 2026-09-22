@@ -11,8 +11,8 @@
 
 ## 2. 分类规范入口
 
-- 前端总则：[agent-docs/frontend.md](agent-docs/frontend.md)
-- 后端总则：[agent-docs/backend.md](agent-docs/backend.md)
+- 前端总则：[agent-docs/frontend.md](./agent-docs/frontend.md)
+- 后端总则：[agent-docs/backend.md](./agent-docs/backend.md)
 
 ## 3. 通用工作方式
 
