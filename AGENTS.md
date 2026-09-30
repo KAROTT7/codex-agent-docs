@@ -34,8 +34,10 @@
 - 修改前先查看 `git status`、当前分支和相关文件，避免覆盖用户现场。
 - 保留用户已有改动，只修改与当前任务相关的文件。
 - 不使用 `git reset --hard`、`git checkout --`、强制推送等破坏性命令，除非用户明确要求。
-- 不主动提交；只有用户明确要求时才创建 commit，且保持提交粒度清晰。
-- commit message 简洁表达“做了什么 + 为什么”，末尾附加当前实际模型和提供商的 `Co-Authored-By` trailer。
+- 不主动提交；只有用户明确要求时才创建 commit。提交前检查暂存区差异，确认提交信息覆盖主要修改。
+- 提交信息默认采用 Conventional Commits 格式：`<type>(<scope>): <subject>`（`scope` 可选）。常用 `type`：`feat`、`fix`、`refactor`、`docs`、`test`、`chore`；标题概括整体改动。
+- 一次提交涉及多个文件或功能时，在 commit body 中用条目说明各项主要修改及原因，不遗漏主要行为变更。
+- 破坏性变更用 `!` 或 `BREAKING CHANGE:` 标明；提交信息末尾附加当前实际模型和提供商的 `Co-Authored-By` trailer。
 
 ## 6. 规范文件与本机工具
 
