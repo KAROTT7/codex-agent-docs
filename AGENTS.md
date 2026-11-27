@@ -33,8 +33,21 @@
 
 - 修改前先查看 `git status`、当前分支和相关文件，避免覆盖用户现场。
 - 保留用户已有改动，只修改与当前任务相关的文件。
-- 不使用 `git reset --hard`、`git checkout --`、强制推送等破坏性命令，除非用户明确要求。
-- 不主动提交；只有用户明确要求时才创建 commit。提交前检查暂存区差异，确认提交信息覆盖主要修改。
+- ### 可以直接执行
+  - 分析提交历史：`git log`、`git show`、`git diff`、`git blame`
+  - 查看状态和分支
+  - 修改当前工作区文件
+  - `git add`
+  - 创建普通提交：`git commit`
+  - 在本地执行代码迁移、重命名、合并和必要的普通 Git 操作
+- ### 必须先说明影响并等待用户明确确认
+  - 删除本地或远程分支：`git branch -d/-D`、`git push --delete`
+  - 强制推送：`git push --force`、`git push --force-with-lease`
+  - 丢弃未提交修改：`git reset --hard`、`git clean`
+  - 改写已有历史：`git rebase`、`git commit --amend`、`git filter-repo`
+  - 删除标签、修改远程地址或其他可能影响远程仓库的操作
+  - 任何可能覆盖用户现有修改或影响远程仓库的操作
+- 执行上述需要确认的操作前，必须先告诉用户具体命令、影响范围和恢复方式，等待明确确认；确认前不得执行，也不得将命令与其他命令串联。
 - 提交信息默认采用 Conventional Commits 格式：`<type>(<scope>): <subject>`（`scope` 可选）。常用 `type`：`feat`、`fix`、`refactor`、`docs`、`test`、`chore`；标题概括整体改动。
 - 一次提交涉及多个文件或功能时，在 commit body 中用条目说明各项主要修改及原因，不遗漏主要行为变更。
 - 破坏性变更用 `!` 或 `BREAKING CHANGE:` 标明；提交信息末尾附加当前实际模型和提供商的 `Co-Authored-By` trailer。
